@@ -10,16 +10,16 @@ router.get("/", async (req, res) => {
 
 // Create a note
 router.post("/", async (req, res) => {
-    const { title, content } = req.body;
-    const newNote = new Note({ title, content });
+    const { title, content,mood } = req.body;
+    const newNote = new Note({ title, content,mood });
     await newNote.save();
     res.json(newNote);
 });
 
 // Update a note
 router.put("/:id", async (req, res) => {
-    const { title, content } = req.body;
-    const updatedNote = await Note.findByIdAndUpdate(req.params.id, { title, content }, { new: true });
+    const { title, content,mood } = req.body;
+    const updatedNote = await Note.findByIdAndUpdate(req.params.id, { title, content,mood }, { new: true });
     res.json(updatedNote);
 });
 
